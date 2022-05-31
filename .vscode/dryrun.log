@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1'
+gfortran -c fftpack5.1.f90 -O3 -w -fallow-argument-mismatch
+make: Leaving directory `/Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1'
+ 
