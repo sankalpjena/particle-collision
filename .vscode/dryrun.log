@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1'
-gfortran -c fftpack5.1.f90 -O3 -w -fallow-argument-mismatch
+gfortran module_particle.F90 initialize.F90 collide.F90 -O3 -w -o collision.out
 make: Leaving directory `/Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1'
  

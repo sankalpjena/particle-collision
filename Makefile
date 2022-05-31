@@ -14,7 +14,7 @@ all: collision
 	
 # clean up
 clean:
-	rm -f *.o *.mod *.MOD
+	rm -f *.o *.mod *.MOD *.out
 	rm -f ./results/*
 
 # clean up
