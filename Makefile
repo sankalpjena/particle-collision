@@ -2,9 +2,12 @@
 FC = gfortran
 
 # list own files
-FILES = module_particle.F90      \
+FILES = module_globalVariables.F90 \
+		module_particle.F90      \
         initialize.F90               \
-        collide.F90
+        collide.F90 \
+		solve.F90 \
+		output.F90
 
 # build
 collision:

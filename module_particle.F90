@@ -23,4 +23,12 @@ type particle
 
 
   ! to be included: interact and evolve
+
+  ! contains 
+  ! subroutine evolve
+  ! end subroutine evolve
+  
+  ! subroutine interact
+  ! end subroutine interact
+
   

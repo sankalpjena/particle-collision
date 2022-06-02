@@ -1,5 +1,6 @@
-# Notes on programming 
+# Log of programming 
 
+# 31<sup>th</sup> May
 ### 1. The structure of the program
 
 The **_make_** utility uses `Makefile` to define the set of tasks to be used. 
@@ -46,6 +47,53 @@ call random_number(p(i)%X)
 
 `X` is of dimension `2` so two random numbers are generated and assigned to `X`
 
+# 02<sup>nd</sup> June
+
 ##### Time Integration
 
  We can't use RK-4 time-integration since it is embedded into the fluid solver. Instead we can use explicit time integration schemes. First, we will try with Explicit Euler, then with RK-4.
+
+ #### I/O files
+
+ `output.F90` is used to export the result to be post-processed in Python.
+
+To create output we need to solve firt, so created a dummy `solve` and then called `solve`. Since we need to 
+progress in time to integrate, `module_globalVariables` was created to have the time and time-steps.
+
+
+Note: Remember to add newly created files to the `Makefile` so that they are compiled otherwise you could get errors like this.
+```
+(data_sc_env) sankalp@jenambp collisionV1 % make collision
+gfortran module_particle.F90 initialize.F90 collide.F90 -O3 -w -o collision.out
+collide.F90:10:6:
+
+   10 |  use moduleGlobalVariables
+      |      1
+Fatal Error: Cannot open module file 'moduleglobalvariables.mod' for reading at (1): No such file or directory
+compilation terminated.
+make: *** [collision] Error 1
+
+```
+
+Added `solve()` to `collide` so that `output` is called. For now only 
+
+Added reading of `input.dat` in `initialize`. Note that the old result files need to be removed in `initialize`
+
+A silly mistake: I removed the last line of the `input.dat` file, and program compilation suddenly gave the error
+```
+At line 18 of file initialize.F90 (unit = 1, file = 'input.dat')
+Fortran runtime error: End of file
+
+Error termination. Backtrace:
+#0  0x10d213e9e
+#1  0x10d214b45
+#2  0x10d21572b
+#3  0x10d436e43
+#4  0x10d437fe5
+#5  0x10d43a999
+#6  0x10d43ac3d
+#7  0x10cdde0e7
+#8  0x10cdde384
+#9  0x10cdde8ce
+```
+It said **Fortran runtime error: End of file**, so I had to add back the empty line :)
