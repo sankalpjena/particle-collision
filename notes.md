@@ -35,7 +35,7 @@ File `initialize.F90` is a subroutine. It is called by the main file i.e. `progr
 
 Next steps: create 5 particles, generate the cell-list, output the results, view the data using python
 
-#####Random number generator:
+##### Random number generator:
 https://masuday.github.io/fortran_tutorial/random.html
 
 - note that the random number(s) are stored in the variable that is passed to the generator and are of the same type as of the variable
@@ -46,4 +46,6 @@ call random_number(p(i)%X)
 
 `X` is of dimension `2` so two random numbers are generated and assigned to `X`
 
-Side note: We can't use RK-4 time-integration since it is embedded into the fluid solver. Instead we can use explicit time integration schemes. First, we will try with Explicit Euler, then with RK-4.
+##### Time Integration
+
+ We can't use RK-4 time-integration since it is embedded into the fluid solver. Instead we can use explicit time integration schemes. First, we will try with Explicit Euler, then with RK-4.
