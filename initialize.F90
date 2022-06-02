@@ -1,21 +1,20 @@
 subroutine initialize
 use moduleParticle
 
-real :: positions(2), x, y
- 
-Np = 1 
+real, dimension (2) :: x1, x2, x3, x4
+
+Np = 4 
 allocate(P(Np))
-positions = 2
-! use of random_number: https://masuday.github.io/fortran_tutorial/random.html
-! note that the random number(s) are stored in the variable that is passed
-! to the generator and are of the same type as of the variable
-do i=1,Np
-  call random_number(p(i)%X)
-  p(i)%m = 1
-  p(i)%R = 0.1
-  write(*,*) 'particle p =', i, 'has following properties'
-  write(*,*) 'mass: ', p(i)%m
-  write(*,*) 'position: ', p(i)%X 
-end do 
+
+! creating 4 particles
+x1 = (/0.0,0.5/)
+x2 = (/0.5, 0.5/)
+x3 = (/0.25,0.5/)
+x4 = (/0.25,0.75/)
+
+P(1)%X = x1
+P(2)%X = x2
+P(3)%X = x3
+P(4)%X = x4
 
 end subroutine initialize

@@ -20,3 +20,7 @@ type particle
 
   type(particle), allocatable :: P(:)
   end module moduleParticle
+
+
+  ! to be included: interact and evolve
+  
