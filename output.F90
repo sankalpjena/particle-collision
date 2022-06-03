@@ -19,7 +19,7 @@ character(len=100) :: filename
 
   
   ! _particle positions
-  write (filename, "(A8,I3.3,A7)") 'results/', nt, '_P.dat'
+  write (filename, "(A8,I6.6,A6)") 'results/', nt, '_P.dat'
   open(unit=12, file = trim(filename), access='direct', recl=25, form='formatted')
     ct=0
     do b=1,Np

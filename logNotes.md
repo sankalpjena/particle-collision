@@ -97,3 +97,9 @@ Error termination. Backtrace:
 #9  0x10cdde8ce
 ```
 It said **Fortran runtime error: End of file**, so I had to add back the empty line :)
+
+# 04<sup>th</sup> June
+
+Tasks:
+1. Python file to read and visualize the location of particles: done! Later: Need to add radius to visualize 
+2. Cell-list 

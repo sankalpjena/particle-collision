@@ -10,10 +10,10 @@ FILES = module_globalVariables.F90 \
 		output.F90
 
 # build
-collision:
-	$(FC) $(FILES) -O3 -w -o collision.out
+collide:
+	$(FC) $(FILES) -O3 -w -o collide.out
 
-all: collision
+all: collide
 	
 # clean up
 clean:
