@@ -47,7 +47,7 @@ call random_number(p(i)%X)
 
 `X` is of dimension `2` so two random numbers are generated and assigned to `X`
 
-# 02<sup>nd</sup> June
+# 01<sup>nd</sup> June
 
 ##### Time Integration
 
@@ -98,8 +98,44 @@ Error termination. Backtrace:
 ```
 It said **Fortran runtime error: End of file**, so I had to add back the empty line :)
 
-# 04<sup>th</sup> June
+# 03<sup>th</sup> June
 
 Tasks:
 1. Python file to read and visualize the location of particles: done! Later: Need to add radius to visualize 
+Figure out how to include another column in output files
+Need to modify this:
+```
+write(12,'(2E12.4,A)',rec=ct) P(b)%X(1), P(b)%X(2),P(b)%R, char(10)
+```
+
+Read: http://math.hawaii.edu/~gautier/math_190_lecture_11.pdf
+
 2. Cell-list 
+
+# 04<sup>th</sup> June
+
+### Writing output
+
+```
+write (filename, "(A8,I6.6,A6)") 'results/', nt, '_P.dat' ! A8 ~ results/, I6.6 ~ 6 spaces with 6 decimal spaces, A6 ~ _P.dat
+```
+Here, the first argument is the output stream, i.e, the string `filename`. The second argument of `write`, `"(A8,I6.6,A6)"` is the format of the `filename`.
+
+- `A8` : 8 spaces for characters (letter count of 'results/')
+- `I6.6` : reserves 6 spaces (including spaces for '.' and any '-') for an integer number (digits in 'nt')
+- `A6` : reserves 6 spaces for characters (letter count of '_P.dat')
+
+Read more about formatting here: http://math.hawaii.edu/~gautier/math_190_lecture_11.pdf
+
+In the following code, the result files are opened in direct access mode. The record length `recl` is important. Since we write 3 data: location and radius of particles and an empty line, we have `recl = 3 * 12 + 1 = 37`
+```
+fmt = '(3E12.4,A)' ! 3 f/E float/scientificNotation values, 1 character string of unspecified length
+
+open(unit=12, file = trim(filename), access='direct', recl=37, form='formatted') !recl = 3 * 12 (#type E * #spaces for each type) + 1 (character strings of unspecified length)
+    ct=0
+    do b=1,Np
+        ct=ct+1
+        write(12,fmt,rec=ct) P(b)%X(1), P(b)%X(2), P(b)%R, char(10) ! rec ... record number needed for direct access data transfer
+    end do
+  close(12)
+  ```

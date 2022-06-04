@@ -28,6 +28,8 @@ Np = 4
 allocate(P(Np))
 
 ! creating 4 particles
+
+! positions
 x1 = (/0.0,0.5/)
 x2 = (/0.5, 0.5/)
 x3 = (/0.25,0.5/)
@@ -37,6 +39,12 @@ P(1)%X = x1
 P(2)%X = x2
 P(3)%X = x3
 P(4)%X = x4
+
+! radius
+P(1)%R = 1
+P(2)%R = 2
+P(3)%R = 3
+P(4)%R = 4
 
 ! remove old result files ---------------------------------------------------
   inquire(file='./results/*_P.dat', exist=lo)
