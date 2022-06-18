@@ -1,70 +1,86 @@
 program dummy
 
+use moduleParticle
+use dictionary_m
+
 implicit none
 
-! *** time integration scheme *****************************
-  real              :: t, dt, t_end
-  integer           :: n_steps, nt, nt_out, ct, Np, b
-  logical :: lo
+real, allocatable :: x(:,:)
+real, allocatable :: prop(:,:) ! dimension (Number of particles, Number of properties)
 
-  character (len=10) :: fmt 
-  real :: x, y, z
-  character(len=100) :: filename
+integer :: i, s(2)
 
-namelist /general/   n_steps,    &! number of time steps
-                        t_end,     &! final time
-                        dt,        &! time step
-                        nt_out    ! output-files every nt_bin timesteps
+! for cellList
+real :: rc
+integer :: cellIdx(2), numCells
+type(dictionary_t) :: cellX(2) ! cells are dictionaries with two indices for 2D domain
 
-! to debug reading of input files
-! read parameters from input.dat --------------------------------------------
-inquire(file='./input.dat', exist=lo)
-if(lo) then  
-  open(unit=1, file='input.dat')
-    read(1,general)
-  close(1)
-end if 
+!init dictionary: size of hash table
+call cellX(1)%init(1024)
+call cellX(2)%init(1024)
 
-! to debug writing output in specified columns
-x = 1
-y = 2
-z = 3
-Np = 2
-fmt = '(3f12.4,A)' ! 3 f/E float/scientific notation, 1 character string of unspecified length
-!101 format(2E12.4,A) ! another way of writing format
-! https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnbs/index.html
+Np = 4
+! creating 'Np' particles
+
+allocate(x(Np,2))
+allocate(prop(Np,1))
+! positions
+x(1,:) = (/0.0,0.0/)
+x(2,:) = (/0.5, 0.5/)
+x(3,:) = (/0.25,0.5/)
+x(4,:) = (/0.25,0.75/)
+
+! Property: radius
+prop(:,1) = (/0.1,0.2,0.3,0.4/)
+
+! Creating an array of Particles i.e set of Particles
+allocate(P(Np))
+
+do i=1,4
+  P(i) = particle(x(i,:),prop(i,1))
+end do
+write(*,*) 'Allocated 4 particles'
 
 
-write(*,fmt) x, y, z, char(10) ! rec ~ record number
-write(*,*) 'print to screen successful'
+!...particleSet
+!allocate(PSet(1))
 
-!_writing without direct access
-write (filename, "(A8,I6.6,A11)") 'results/', nt, '_Punfmt.dat' ! A8 ~ results/, I6.6 ~ 6 spaces with 6 decimal spaces, A11 ~ _Punfmt.dat
-open(unit=16, file=trim(filename))
-do b=1,Np
-        write(16,fmt) x, y, z ! rec ... record number needed for direct access data transfer
-    end do
-close(16)
-write(*,*) 'write to file w/o direct access successful'
+!PSet = particleSet(Particles) ! figure out why this doesn't work -> update: this is not needed as we have Particle set P(:) already
 
-! _writing with direct access
-  write (filename, "(A8,I6.6,A9)") 'results/', nt, '_Pfmt.dat'
-  open(unit=12, file = trim(filename), access='direct', recl=25, form='formatted')
-    ct=0
-    do b=1,Np
-        ct=ct+1
-        write(12,fmt,rec=ct) x, y, z! rec ... record number needed for direct access data transfer
-    end do
-  close(12)
-  write(*,*) 'write to file w/ direct access successful'
+! cellList
+rc = 0.5
+numCells = ceiling(1/rc) * ceiling(1/rc)
+write(*,*) 'number of  cells', numCells
 
-    !_writing particle positions without direct access
-  !write (filename, "(A8,I6.6,A6)") 'results/', nt, '_P.dat' ! A8 ~ results/, I6.6 ~ 6 spaces with 6 decimal spaces, A6 ~ _P.dat
-  !open(unit=16, file=trim(filename))
-  !  do b=1,Np
-  !      write(16,fmt) P(b)%X(1), P(b)%X(2), P(b)%R
-  !  end do
-  !close(16)
+!allocate(cells(4))
+!write(*,*) "particle 1 position:", Particles(1)%positions
+!call cells(0,0)%set('1')
+! How to get empty lists lists in fortran, and append new neighbor particles as we find them
 
+do i = 1,4
+
+  cellIdx(1) = floor(P(i)%positions(1)/rc)
+  cellIdx(2) = floor(P(i)%positions(2)/rc)
+  write(*,*) "cell Index:", cellIdx
+
+end do 
+
+! adding a key and a value. here, 0 refers to the cell[0] and 1 refers to the particle inside that cell
+write(*,*) "added p1 to cell0"
+call cellX(1)%set('0', '1')
+write(*,*) "added p2 to cell0, this doesn't work as set() replaces the value of the key"
+! how to get append functionality? Need the cell 'keys' to be a list so that arbitrary number of cells could be stored
+call cellX(1)%set('0','2')
+!call cellX(1)%find('0')
+
+! to show the contents of the dictionary
+call cellX(1)%show()
+
+write(*,*) cellX(1)%get('0')
+
+
+!if (cellIdx(1) == 1) then
+  
+!end if 
 
 end program dummy

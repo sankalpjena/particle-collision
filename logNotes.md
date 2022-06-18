@@ -139,3 +139,43 @@ open(unit=12, file = trim(filename), access='direct', recl=37, form='formatted')
     end do
   close(12)
   ```
+
+  # OOP in Fortran
+
+  source : https://cyber.dabamos.de/programming/modernfortran/object-oriented-programming.html
+
+  Problem in particleSet with constructor. Tommorow work on how to implement the constructor
+
+
+# 08<sup>th</sup> June
+
+For now, created an array of particles 'P'. Now, working on cellList.
+Two issues to resolve: 
+1. Need implementation of linked list in Fortran. So, that when new particle corresponding to a 
+cell is found, we need to add them.
+2. Dictionary to store the indices of particles corresponding to a cell. I think, a linked 
+list would solve this issue as well. NO IT WON'T!
+
+
+# 17<sup>th</sup> June
+
+Dropping the cell-list implementation. Search for all the collisions by checking for all of the 
+particles' interaction with every other particle. The cost would be O(N^2).
+
+# 18<sup>th</sup> June
+
+Summary till now: I have 4 particles. Now, I need to know the overlap of every particle with each other.
+To find the overlap, I need to know the distance between two particles (L2 norm), check whether they overlap $d_{pq} = (R_p + R_q) - \lvert \underbar{x}_p - \underbar{x}_q \rvert$
+
+In module `moduleOverlap`, there are two functions: `distance()` and `overlap()`. They are based on the formula:
+$$ \lvert \underbar{x}_p - \underbar{x}_q \rvert = \sqrt{ (x_p - x_q)^2 + (y_p - y_q)^2 } $$
+and 
+$$ d_{pq} = (R_p + R_q) - \lvert \underbar{x}_p - \underbar{x}_q \rvert $$
+
+*12:15* Implemented the overlap calculations and verified with manual calculation. See notes (Beleg/Code). 
+
+Now, need to implement the contact laws. Here, if the deformation is positive, i.e, distance between two particles is greater than the sum of their radius, then apply contact law. Otherwise, do not interact them as they are separated. 
+
+In solve(), all of the interaction is being done.
+
+Modified plot.py, to read `input.dat` to extract the `n_steps`.

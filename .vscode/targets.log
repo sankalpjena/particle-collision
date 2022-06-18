@@ -7,7 +7,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Tue May 31 16:52:52 2022
+# Make data base, printed on Tue Jun 14 07:51:47 2022
+ 
 
 # Variables
 
@@ -24,7 +25,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1
+CURDIR := /Users/sankalp/Desktop/Semester4/MPS/Beleg/collisionV1
 # makefile
 SHELL = /bin/sh
 # environment
@@ -38,11 +39,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-03964bbc-79c5-4980-896f-ba2e39156d3f.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-de889797-dcff-4521-aa4b-a4ea153cf254.sock
 # environment
 VSCODE_CWD = /
 # environment
 PATH = /usr/local/include/opencv4:/usr/local/opt/qt@5/bin:/usr/local/Caskroom/miniconda/base/condabin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/Library/Apple/usr/bin
+# environment
+LaunchInstanceID = A649DAB3-8F66-4A5C-A262-CF989B8DC3E1
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -50,17 +53,17 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.IgXdDefPyR/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.OBN9etnsH1/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.D5IBNRDO33/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.V5AkMBukSA/org.xquartz:0
 # environment
 CONDA_EXE = /usr/local/Caskroom/miniconda/base/bin/conda
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1
+PWD = /Users/sankalp/Desktop/Semester4/MPS/Beleg/collisionV1
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -70,7 +73,7 @@ HOME = /Users/sankalp
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/sankalp/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/sankalp/Library/Application Support/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
 # environment
 LOGNAME = sankalp
 # environment
@@ -94,7 +97,7 @@ USER = sankalp
 # makefile (from `Makefile', line 2)
 FC = gfortran
 # makefile
-.DEFAULT_GOAL := collision
+.DEFAULT_GOAL := collide
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -108,7 +111,7 @@ TMPDIR = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/sankalp/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /Users/sankalp/Library/Application Support/Code/1.68.0-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -116,7 +119,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.15340099.15341777
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.16735952.16737636
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -133,6 +136,8 @@ MAKEFILES :=
 LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /usr/local/Caskroom/miniconda/base/bin/python
+# environment
+SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -146,13 +151,13 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 40638
+VSCODE_PID = 12721
 # environment
 _CE_CONDA = 
 # makefile (from `Makefile', line 5)
-FILES = module_particle.F90 initialize.F90 collide.F90
+FILES = dictionary_m.f90 module_globalVariables.F90 module_particle.F90 module_particleSet.F90 initialize.F90 solve.F90 output.F90 collide.F90 
 # variable set hash-table stats:
-# Load=70/1024=7%, Rehash=0, Collisions=1/98=1%
+# Load=72/1024=7%, Rehash=0, Collisions=1/100=1%
 
 # Pattern-specific Variable Values
 
@@ -160,9 +165,9 @@ FILES = module_particle.F90 initialize.F90 collide.F90
 
 # Directories
 
-# . (device 16777220, inode 15787933): 14 files, no impossibilities.
+# . (device 16777220, inode 15787933): 32 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 32 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -174,11 +179,11 @@ clean_data:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 22):
+#  commands to execute (from `Makefile', line 27):
 	rm -f ./results/*
 	
 
-all: collision
+all: collide
 #  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -186,7 +191,7 @@ all: collision
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  commands to execute (from `Makefile', line 14):
+#  commands to execute (from `Makefile', line 19):
 	
 
 # Not a target:
@@ -198,20 +203,35 @@ all: collision
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 14:04:04
+#  Last modified 2022-06-08 14:24:00
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-collision:
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 22):
+	rm -f *.o *.mod *.MOD *.out
+	rm -f ./results/*
+	
+
+collide:
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
-# @ := collision
+# @ := collide
 # automatic
 # % := 
 # automatic
@@ -228,23 +248,8 @@ collision:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
-#  commands to execute (from `Makefile', line 11):
-	$(FC) $(FILES) -O3 -w -o collision.out
-	
-
-# Not a target:
-.DEFAULT:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 17):
-	rm -f *.o *.mod *.MOD
-	rm -f ./results/*
+#  commands to execute (from `Makefile', line 16):
+	$(FC) $(FILES) -O3 -w -o collide.out
 	
 
 # files hash-table stats:
@@ -260,6 +265,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue May 31 16:52:52 2022
+# Finished Make data base on Tue Jun 14 07:51:47 2022
 
  

@@ -5,9 +5,10 @@ FC = gfortran
 FILES = module_globalVariables.F90 \
 		module_particle.F90      \
         initialize.F90               \
-        collide.F90 \
+		module_overlap.F90 \
 		solve.F90 \
-		output.F90
+		output.F90 \
+		collide.F90 
 
 # build
 collide:

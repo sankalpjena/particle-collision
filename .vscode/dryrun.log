@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1'
-gfortran module_particle.F90 initialize.F90 collide.F90 -O3 -w -o collision.out
-make: Leaving directory `/Users/sankalp/Desktop/Semester 4/MPS/Beleg/collisionV1'
+make: Entering directory `/Users/sankalp/Desktop/Semester4/MPS/Beleg/collisionV1'
+gfortran dictionary_m.f90 module_globalVariables.F90 module_particle.F90 module_particleSet.F90 initialize.F90 solve.F90 output.F90 collide.F90  -O3 -w -o collide.out
+make: Leaving directory `/Users/sankalp/Desktop/Semester4/MPS/Beleg/collisionV1'
  

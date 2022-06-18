@@ -27,7 +27,7 @@ fmt = '(3E12.4,A)' ! 3 f/E float/scientificNotation values, 1 character string o
     ct=0
     do b=1,Np
         ct=ct+1
-        write(12,fmt,rec=ct) P(b)%X(1), P(b)%X(2), P(b)%R, char(10) ! rec ... record number needed for direct access data transfer
+        write(12,fmt,rec=ct) P(b)%positions(1), P(b)%positions(2), P(b)%properties(1), char(10) ! rec ... record number needed for direct access data transfer
     end do
   close(12)
 
