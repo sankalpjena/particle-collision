@@ -6,9 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
-
-# Make data base, printed on Tue Jun 14 07:51:47 2022
  
+
+# Make data base, printed on Sun Jun 26 13:27:55 2022
 
 # Variables
 
@@ -39,7 +39,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-de889797-dcff-4521-aa4b-a4ea153cf254.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-d3c489cc-066b-4bb2-a539-e889537c19cf.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -73,7 +73,7 @@ HOME = /Users/sankalp
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/sankalp/Library/Application Support/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+VSCODE_CODE_CACHE_PATH = /Users/sankalp/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = sankalp
 # environment
@@ -111,7 +111,7 @@ TMPDIR = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/sankalp/Library/Application Support/Code/1.68.0-main.sock
+VSCODE_IPC_HOOK = /Users/sankalp/Library/Application Support/Code/1.68.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -151,11 +151,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 12721
+VSCODE_PID = 69206
 # environment
 _CE_CONDA = 
 # makefile (from `Makefile', line 5)
-FILES = dictionary_m.f90 module_globalVariables.F90 module_particle.F90 module_particleSet.F90 initialize.F90 solve.F90 output.F90 collide.F90 
+FILES = module_globalVariables.F90 module_particle.F90 initialize.F90 module_overlap.F90 module_contactLaw.F90 solve.F90 output.F90 collide.F90 
 # variable set hash-table stats:
 # Load=72/1024=7%, Rehash=0, Collisions=1/100=1%
 
@@ -192,6 +192,7 @@ all: collide
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 #  commands to execute (from `Makefile', line 19):
+ 
 	
 
 # Not a target:
@@ -203,7 +204,7 @@ all: collide
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-08 14:24:00
+#  Last modified 2022-06-20 13:38:23
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -265,6 +266,6 @@ collide:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jun 14 07:51:47 2022
+# Finished Make data base on Sun Jun 26 13:27:55 2022
 
  

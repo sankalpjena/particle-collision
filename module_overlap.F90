@@ -18,8 +18,10 @@ function overlap(d,Rp,Rq) result(defPQ)
     real, intent(in) :: d, Rp, Rq
     real :: defPQ
 
-    defPQ = (Rp + Rq) - d
+    defPQ = (Rp + Rq) - d   ! (Eq. 4.14)
 
 end function overlap
+
+
 
 end module moduleOverlap

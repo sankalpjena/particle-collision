@@ -17,22 +17,13 @@ type particle
     !        u(2), & ! elastic deformation
     !        m, Ip ! mass, polar moment of inertia
 
-    real :: positions(2), properties(1), &
-            positionChange(2) = (/0.0 , 0.0/), propertiesChange(1) = (/0./) 
+    ! Properties: Radius, mass, polar moment of inertia, velocity, angular velocity, elastic tangential deformation
+    real :: positions(2),radius = 0.0, mass = 0, polarInertia = 0, velocity(2) = (/0.0, 0.0/), angVelocity = 0, elTanDef(2) = 0, &
+            positionChange(2) = (/0.0 , 0.0/), velocityChange(2) = (/0.0 , 0.0/), angVelocityChange = 0.0
 end type particle
 
-type(particle), allocatable :: P(:) !only for compiling output.F90, remove later
+type(particle), allocatable :: P(:) !array of particles
 
 end module moduleParticle
-
-
-  ! to be included: interact and evolve
-
-  ! contains 
-  ! subroutine evolve
-  ! end subroutine evolve
-  
-  ! subroutine interact
-  ! end subroutine interact
 
   

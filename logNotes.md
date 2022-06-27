@@ -179,3 +179,18 @@ Now, need to implement the contact laws. Here, if the deformation is positive, i
 In solve(), all of the interaction is being done.
 
 Modified plot.py, to read `input.dat` to extract the `n_steps`.
+
+# 26<sup>th</sup> June
+
+Working on the forces.
+
+Wrote listing 4.8, but need to verify them.
+
+Next time-integration scheme.
+
+# 27<sup>th</sup> June
+
+In the `interact` subroutine, the collisions are detected. Corresponding overlaps are computed. Using the formulation in 
+https://aip.scitation.org/doi/pdf/10.1063/1.1487379, forces are computed. From the forces, acceleration (force/mass) is computed, then the velocity calculated by Explicit Euler integration. Similarly, for angular velocity. Finally, the position is calculated by integrating the velocity.
+
+The calculations have not been verified. Need to figure out the time-steps.

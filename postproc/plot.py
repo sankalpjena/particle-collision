@@ -21,7 +21,7 @@ nStop = int(n_steps[0]) + 1     # change for the number of time-steps, from inpu
 nStep = 1
 
 # plotting circles
-Np = 4 # Number of particles
+Np = 2 # Number of particles
 
 # iterate through the time-steps to plot them 
 for i in range(nStart, nStop, nStep):
@@ -41,12 +41,12 @@ for i in range(nStart, nStop, nStep):
     for p in range(0,Np):
         circles = plt.Circle((x[p],y[p]), r[p], fill=False)
         ax.add_patch(circles)
-        text = 'p%i' %(p)
+        text = 'p%i' %(p+1)
         ax.annotate(text,(x[p]+anotateOffSetX,y[p]+anotateOffSetY),size=10,color='b')
     
     # formatting the axes, adding titles
     ax.set_aspect('equal', 'box')
-    ax.set(xlim=(-1, 1), ylim=(-1, 2))
+    ax.set(xlim=(0, 1), ylim=(0, 1))
     ax.set_title('Time, t = %i' %(i), fontsize=10)
 
     # pause the plot before going to the next one

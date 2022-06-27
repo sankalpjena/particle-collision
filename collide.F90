@@ -37,8 +37,11 @@ program collide
     ! update time --------------
     t = t+dt
 
+    write(*,*) ''
+    write(*,*) 'Solving for t = ', t
+
     ! time integration ---------
-    call solve
+    call interact
 
     ! write plot files ---------
     if(modulo(nt,nt_out).eq.0) call output
@@ -53,6 +56,12 @@ program collide
     
   end do
   
+  ! deallocation ----------
+  call deallocation
+
+  write(*,*)
+  write(*,*) ' deallocating'
+
   write(*,*)
   write(*,*)'-----------------------------------------------------------------'
   write(*,*)' done ... '
