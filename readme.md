@@ -24,7 +24,7 @@ To view the results:
 python3 postproc/plot.py
 ```
 
-Note: If you run `plot.py` from inside the `postproc` folder then change the path of `results` to `../results/`
+Note: If you run `plot.py` from inside the `postproc` folder then change the path of `results` to `../results/` similarly for `input.dat`.
 
 In `plot.py`, the time-steps are read from `input.dat`. The number of particles initialised `Np` needs to be changed.
 

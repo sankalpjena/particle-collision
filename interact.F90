@@ -20,7 +20,7 @@ subroutine interact()
   real :: dist, def, projVel ! distance and deformation
   integer :: i,j    ! loop variables
   real :: vr_pq(2), vt_pq(2), normal(2), v_pq(2), omega, omegaTilde(3,3), normalTilde(3,1), crossProduct(3,1)
-  real :: omgXnormal(2), upq(2) = (/0,0/), Fr_pq(2)=(/0.0, 0.0/), Ft_pq(2)=(/0.0, 0.0/), F(2) = (/0.0, 0.0/), tau = 0
+  real :: omgXnormal(2), upq(2) = (/0,0/), Fr_pq(2)=(/0.0, 0.0/), Ft_pq(2)=(/0.0, 0.0/), F(2) = (/0.0, 0.0/), tau_pq = 0
   real :: rP, rQ, mP, mQ, mEff
   real :: factor, grm, gtm, a, b
 
@@ -28,6 +28,10 @@ subroutine interact()
 
 write(*,*) ''
 
+do i = 1,Np
+  P(i)%velocityChange = 0
+  P(i)%angVelocityChange = 0
+end do
 
 do i = 1,Np ! particle - p
   
@@ -35,6 +39,9 @@ do i = 1,Np ! particle - p
   rP = P(i)%radius  ! radius
   mP = P(i)%mass    ! mass
 
+  ! corrections
+  ! = (/0.0,0.0/)
+  !tau_pq = 0
 
   do j = i+1,Np ! particle - q
     
@@ -108,21 +115,18 @@ do i = 1,Np ! particle - p
       end if 
 
       ! total force on the particle (Eq. 4.22) 
-      F = F + Fr_pq + Ft_pq
-      ! total torque on the particle (Eq. 4.23) 
-      tau = tau + (normal(1)*Fr_pq(2) - normal(2)*Fr_pq(1)) ! cross product
-
-      ! property change of particles
-      P(i)%velocityChange = F
-      P(i)%angVelocityChange = tau
+      P(i)%velocityChange = P(i)%velocityChange + Fr_pq + Ft_pq !F = F + Fr_pq + Ft_pq
+      P(j)%velocityChange = P(j)%velocityChange - Fr_pq - Ft_pq
       
-      ! Newton's third law: Fpq = Fqp
-      P(j)%velocityChange = - F
-      P(j)%angVelocityChange = - tau
+      ! total torque on the particle (Eq. 4.23) 
+      tau_pq = (normal(1)*Fr_pq(2) - normal(2)*Fr_pq(1)) ! cross product
+      P(i)%angVelocityChange = P(i)%angVelocityChange + tau_pq
+      P(j)%angVelocityChange = P(j)%angVelocityChange - tau_pq
     
     end if 
   
-  end do
+
+  end do ! end of j, particle q
 
   ! evolve - Explicit Euler
   P(i)%angVelocity = P(i)%angVelocity + (P(i)%angVelocityChange * dt)/P(i)%polarInertia

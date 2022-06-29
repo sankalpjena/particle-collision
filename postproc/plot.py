@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 # importing regex for extracting numbers from input.dat
 import re
 
+# animation
+import matplotlib.animation as ani
+
 # for drawing circles
 #import matplotlib.patches as mpatches
 #from matplotlib.collections import PatchCollection

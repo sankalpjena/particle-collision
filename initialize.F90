@@ -58,11 +58,11 @@ mass(:) = (/1,1/) !(/1,1,1,1/)
 pMoI(:) = (/1,1/) !(/1,1,1,1/)
 
 ! velocity
-velocity(:,1) = (/0.0,0.1/) !(/0,1,0,0/)
+velocity(:,1) = (/0.0,0.0/) !(/0,1,0,0/)
 velocity(:,2) = (/0.0,0.0/) !(/0,0,0,0/)
 
 ! angular velocity
-angVelocity(:) = (/0.0,0.1/) !(/0,1,0,0/)
+angVelocity(:) = (/0.0,0.0/) !(/0,1,0,0/)
 
 ! elastic displacement
 elTanDef(:,1) = (/0.0,0.0/) !(/0,0,0,0/)
