@@ -30,13 +30,16 @@ Np = 2 # Number of particles
 for i in range(nStart, nStop, nStep):
     # read and plot Lagrange points
     file = './results/'+f"{i:06}"+'_P.dat'
-    x, y, r = np.loadtxt(file,unpack=True)
+    x, y, r, vx, vy = np.loadtxt(file,unpack=True)
 
     # instanciating the plots
     fig, ax = plt.subplots()
 
     # scatter the particle positions
     ax.scatter(x,y,marker='.',color='k',edgecolors='red',s=100)
+
+    # plot the velocity vectors
+    plt.quiver(x,y,vx,vy)
 
     # plot circles around the particles
     anotateOffSetX = 0.006

@@ -1,4 +1,4 @@
-subroutine interact()
+subroutine solve()
 
 ! *****************************************************************************
 ! 
@@ -61,6 +61,7 @@ do i = 1,Np ! particle - p
     ! if def > 0 => overlap, then apply contact laws
     if (def .ge. 0) then
       write(*,*) "overlap between i,j", i,j
+      write(*,*) "overlap: ", def 
       normal = unitNormal(P(i)%positions,P(j)%positions) ! calling unitNormal function from moduleContactLaw
       write(*,*) "unit normal: ", normal
       
@@ -117,11 +118,15 @@ do i = 1,Np ! particle - p
       ! total force on the particle (Eq. 4.22) 
       P(i)%velocityChange = P(i)%velocityChange + Fr_pq + Ft_pq !F = F + Fr_pq + Ft_pq
       P(j)%velocityChange = P(j)%velocityChange - Fr_pq - Ft_pq
+      write(*,*) "Force on i: ", P(i)%velocityChange
+      write(*,*) "Force on j: ", P(j)%velocityChange
       
       ! total torque on the particle (Eq. 4.23) 
       tau_pq = (normal(1)*Fr_pq(2) - normal(2)*Fr_pq(1)) ! cross product
       P(i)%angVelocityChange = P(i)%angVelocityChange + tau_pq
       P(j)%angVelocityChange = P(j)%angVelocityChange - tau_pq
+      write(*,*) "Torque on j: ", P(i)%angVelocityChange
+      write(*,*) "Torque on j: ", P(j)%angVelocityChange
     
     end if 
   
@@ -137,8 +142,9 @@ do i = 1,Np ! particle - p
   if (P(i)%positions(1) .ge. 1) then 
     P(i)%positions(1) = P(i)%positions(1) - 1
   end if 
+  ! add for other boundaries
   
   
 end do
 
-end subroutine interact
+end subroutine solve

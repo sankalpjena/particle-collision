@@ -41,7 +41,7 @@ program collide
     write(*,*) 'Solving for t = ', t
 
     ! time integration ---------
-    call interact
+    call solve
 
     ! write plot files ---------
     if(modulo(nt,nt_out).eq.0) call output
