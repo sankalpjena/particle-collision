@@ -21,8 +21,8 @@ all: collide
 # clean up
 clean:
 	rm -f *.o *.mod *.MOD *.out
-	rm -f ./results/*
+	rm -r ./results/*
 
 # clean up
 clean_data:
-	rm -f ./results/*
+	rm -r ./results/*

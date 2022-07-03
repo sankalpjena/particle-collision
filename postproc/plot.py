@@ -87,7 +87,7 @@ for i in range(nStart, nStop, nStep):
 
 ax = plt.axes()
 ax.plot(time,height,color='blue',linestyle='dashdot',label='Simulation')
-ax.set(xlim=(0, time[-1]), ylim=(min(height) - 1, max(height) + 1),         #ylim=(min(height) - 1, max(height) + 1)
+ax.set(xlim=(0, time[-1]), ylim=(0, 1.5),         #ylim=(min(height) - 1, max(height) + 1)
        xlabel='Time[s]', ylabel='Height[m]',
        title='Bouncing Ball');
 plt.legend()

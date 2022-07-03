@@ -28,7 +28,7 @@ subroutine solve()
 
 write(*,*) ''
 
-! Initialising the Forces to be zero ~ not correct
+! Initialising the Forces to be zero/gravity 
 ! for 2 particles don't give gravity force to the second fixed particle
 ! for multiple particles replace 1 -> i
 do i = 1,Np 
