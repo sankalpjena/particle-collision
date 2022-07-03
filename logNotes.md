@@ -199,4 +199,4 @@ The calculations have not been verified. Need to figure out the time-steps.
 
 Problem of overlap: To control the maximum overlap, the normal stiffness coefficient needs to be modified according to $$ k_n \sim m (\frac{v_{max}}{x_{max}})^2$$ Eq. (4) Schwarz et. al.
 
-For $k_r = 450$ in `module_globalVariables.F90` and `dt = 0.1` in `input.dat` the solution looks physical till $t=1.25$, and then diverges. I expected that upon decreasing `dt` the solution should converge, but it diverges completely.
+For $k_r = 450$ in `module_globalVariables.F90` and `dt = 0.1` in `input.dat` the solution looks physical till $t \sim 1 s$, and then diverges. I expected that upon decreasing `dt` the solution should converge, but it diverges completely.
