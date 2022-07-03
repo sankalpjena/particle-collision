@@ -28,9 +28,12 @@ subroutine solve()
 
 write(*,*) ''
 
-do i = 1,Np
-  P(i)%velocityChange = 0
-  P(i)%angVelocityChange = 0
+! Initialising the Forces to be zero ~ not correct
+! for 2 particles don't give gravity force to the second fixed particle
+! for multiple particles replace 1 -> i
+do i = 1,Np 
+  P(1)%velocityChange(:) = (/0.0, - P(1)%mass * gravity/) 
+  P(1)%angVelocityChange = 0
 end do
 
 do i = 1,Np ! particle - p
@@ -38,10 +41,6 @@ do i = 1,Np ! particle - p
   ! properties of 'p'
   rP = P(i)%radius  ! radius
   mP = P(i)%mass    ! mass
-
-  ! corrections
-  ! = (/0.0,0.0/)
-  !tau_pq = 0
 
   do j = i+1,Np ! particle - q
     
@@ -60,6 +59,7 @@ do i = 1,Np ! particle - p
 
     ! if def > 0 => overlap, then apply contact laws
     if (def .ge. 0) then
+      write(*,*) ''
       write(*,*) "overlap between i,j", i,j
       write(*,*) "overlap: ", def 
       normal = unitNormal(P(i)%positions,P(j)%positions) ! calling unitNormal function from moduleContactLaw
@@ -87,6 +87,7 @@ do i = 1,Np ! particle - p
 
       ! integration of elastic tangential deformation - didn't understand this
       P(j)%elTanDef =  P(j)%elTanDef + upq +  dt * vt_pq
+      write(*,*) "Tangential Elastic Deformation: ", P(j)%elTanDef
 
       ! radial contact force (Eq. 4.18)
       factor = sqrt(def/(rP+rQ))
@@ -118,14 +119,14 @@ do i = 1,Np ! particle - p
       ! total force on the particle (Eq. 4.22) 
       P(i)%velocityChange = P(i)%velocityChange + Fr_pq + Ft_pq !F = F + Fr_pq + Ft_pq
       P(j)%velocityChange = P(j)%velocityChange - Fr_pq - Ft_pq
-      write(*,*) "Force on i: ", P(i)%velocityChange
+      write(*,*) "Force on i: ", Fr_pq + Ft_pq !P(i)%velocityChange
       write(*,*) "Force on j: ", P(j)%velocityChange
       
       ! total torque on the particle (Eq. 4.23) 
       tau_pq = (normal(1)*Fr_pq(2) - normal(2)*Fr_pq(1)) ! cross product
       P(i)%angVelocityChange = P(i)%angVelocityChange + tau_pq
       P(j)%angVelocityChange = P(j)%angVelocityChange - tau_pq
-      write(*,*) "Torque on j: ", P(i)%angVelocityChange
+      write(*,*) "Torque on i: ", tau_pq !P(i)%angVelocityChange
       write(*,*) "Torque on j: ", P(j)%angVelocityChange
     
     end if 
@@ -138,10 +139,10 @@ do i = 1,Np ! particle - p
   P(i)%velocity = P(i)%velocity + (P(i)%velocityChange * dt)/(P(i)%mass)
   P(i)%positions = P(i)%positions + dt * P(i)%velocity
 
-  ! check if particle moved out of the boundary
-  if (P(i)%positions(1) .ge. 1) then 
-    P(i)%positions(1) = P(i)%positions(1) - 1
-  end if 
+  !! check if particle moved out of the boundary
+  !if (P(i)%positions(1) .ge. 1) then 
+  !  P(i)%positions(1) = P(i)%positions(1) - 1
+  !end if 
   ! add for other boundaries
   
   

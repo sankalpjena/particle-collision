@@ -194,3 +194,9 @@ In the `interact` subroutine, the collisions are detected. Corresponding overlap
 https://aip.scitation.org/doi/pdf/10.1063/1.1487379, forces are computed. From the forces, acceleration (force/mass) is computed, then the velocity calculated by Explicit Euler integration. Similarly, for angular velocity. Finally, the position is calculated by integrating the velocity.
 
 The calculations have not been verified. Need to figure out the time-steps.
+
+# 03<sup>th</sup> July
+
+Problem of overlap: To control the maximum overlap, the normal stiffness coefficient needs to be modified according to $$ k_n \sim m (\frac{v_{max}}{x_{max}})^2$$ Eq. (4) Schwarz et. al.
+
+For $k_r = 450$ in `module_globalVariables.F90` and `dt = 0.1` in `input.dat` the solution looks physical till $t=1.25$, and then diverges. I expected that upon decreasing `dt` the solution should converge, but it diverges completely.

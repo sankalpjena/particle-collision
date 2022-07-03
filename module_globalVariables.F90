@@ -20,6 +20,6 @@ implicit none
   
 ! *** parameters ******************************************
   real, parameter   :: pi = 3.14159265359
-  real, parameter   :: gamma_r = 1, k_r = 1, gamma_t = 0, k_t = 1, gravity(2) = (/9.81, 0.0/), mu = 0.5
+  real, parameter   :: gamma_r = 1, k_r = 450, gamma_t = 0, k_t = 1, gravity = 9.81, mu = 0.5
 
 end module moduleGlobalVariables    
