@@ -1,6 +1,6 @@
 $general
-    n_steps   =  50000        ,  ! number of time steps = t_end / dt
-    t_end     =  5	          ,  ! physical time
+    n_steps   =  40000        ,  ! number of time steps = t_end / dt
+    t_end     =  4	          ,  ! physical time
     dt        =  0.0001            ,  ! time step
-    nt_out    =  1             ,  ! output every nt_out timesteps
+    nt_out    =  400             ,  ! output every nt_out timesteps
 $end

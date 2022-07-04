@@ -13,9 +13,9 @@ print*,"Please insert the value of x at which solution is to be found i.e. xend"
 read*,xend
 n=int((xend-x)/h+0.5)
 do i=1,n
-x=x+h
+x=x+h ! time 
 k1=h*f(x,y)
-k2=h*f(x+h/2.,y+k1*h/2.)
+k2=h* (x+h/2) + 2*(y+k1*h/2) !f(x+h/2.,y+k1*h/2.)
 k3=h*f(x+h/2.,y+k2*h/2.)
 k4=h*f(x+h,y+k3*h)
 dy=(1/6.)*(k1+k4+2*(k2+k3))

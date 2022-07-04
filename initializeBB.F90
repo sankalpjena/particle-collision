@@ -7,7 +7,6 @@ real, allocatable :: x(:,:) ! position, dimension (Number of particles, 2D)
 real, allocatable :: radius(:), mass(:), pMoI(:), velocity(:,:), angVelocity(:), elTanDef(:,:), velocityChange(:,:)  ! dimension (Number of particles)
 integer :: i 
 logical :: lo
-real :: wallR,wallM
 
 
 namelist /general/   n_steps,    &! number of time steps
@@ -41,14 +40,9 @@ allocate(angVelocity(Np))
 allocate(elTanDef(Np,2))
 allocate(velocityChange(Np,2))
 
-! wall properties
-wallR = 0.1 !1.0e-12
-wallM = 1.0e10
-wallI = 1.0e10
-
 ! positions
 x(1,:) = (/0.5,1.0/) !(/0.0,0.0/)
-x(2,:) = (/0.5, -wallR/) !(/0.5, 0.5/)
+x(2,:) = (/0.5, 0.0/) !(/0.5, 0.5/)
 !x(3,:) = (/0.25,0.5/)
 !x(4,:) = (/0.25,0.75/)
 
@@ -56,13 +50,13 @@ x(2,:) = (/0.5, -wallR/) !(/0.5, 0.5/)
 !                                angular velocity, elastic deformation
 
 ! Property: radius
-radius(:) = (/0.1,wallR/) !(/0.1,0.2,0.3,0.4/)! (/0.1,0.1/)
+radius(:) = (/0.1,0.1/) !(/0.1,0.2,0.3,0.4/)! (/0.1,0.1/)
 
 ! mass
-mass(:) = (/1.0,wallM/) !(/1,1,1,1/)
+mass(:) = (/1.0,1000000000000.0/) !(/1,1,1,1/)
 
 ! moment of inertia
-pMoI(:) = (/0.1,wallI/) !(/1,1,1,1/)
+pMoI(:) = (/0.1,0.1/) !(/1,1,1,1/)
 
 ! velocity
 velocity(:,1) = (/0.0,0.0/) !(/0.0,0.0/) (/0.0,0.0,0.0,0.0/)
@@ -78,8 +72,6 @@ elTanDef(:,2) = (/0.0,0.0/) !(/0,0,0,0/) (/0.0,0.0,0.0,0.0/)
 ! initialising the force with gravity
 velocityChange(:,1) = (/0.0 , 0.0/)
 velocityChange(:,2) = (/- mass(:) * gravity/)
-
-! wall acceleration = 0
 velocityChange(2,2) = 0.0
 
 ! Creating an array of Particles i.e set of Particles

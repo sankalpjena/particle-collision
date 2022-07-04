@@ -32,9 +32,13 @@ write(*,*) ''
 ! for 2 particles don't give gravity force to the second fixed particle
 ! for multiple particles replace 1 -> i
 do i = 1,Np 
-  P(1)%velocityChange(:) = (/0.0, - P(1)%mass * gravity/) 
-  P(1)%angVelocityChange = 0
+  P(i)%velocityChange(:) = (/0.0, - P(i)%mass * gravity/) 
+  P(i)%angVelocityChange = 0
 end do
+
+! particle 2 is wall
+P(2)%velocityChange(:) = (/0.0, 0.0/) 
+P(2)%angVelocityChange = 0
 
 do i = 1,Np ! particle - p
   

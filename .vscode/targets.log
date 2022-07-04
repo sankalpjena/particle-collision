@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Sat Jul  2 13:55:03 2022
+# Make data base, printed on Mon Jul  4 17:44:26 2022
 
 # Variables
 
@@ -38,7 +38,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-c0d50522-d8f0-449d-8768-551b0fa51424.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-b9b5de01-9987-470d-aef4-6c43ca7b8997.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -154,7 +154,7 @@ VSCODE_PID = 21817
 # environment
 _CE_CONDA = 
 # makefile (from `Makefile', line 5)
-FILES = module_globalVariables.F90 module_particle.F90 initialize.F90 module_overlap.F90 module_contactLaw.F90 deallocation.F90 interact.F90 output.F90 collide.F90 
+FILES = module_globalVariables.F90 module_particle.F90 initialize.F90 module_overlap.F90 module_contactLaw.F90 deallocation.F90 solve.F90 output.F90 collide.F90 
 # variable set hash-table stats:
 # Load=72/1024=7%, Rehash=0, Collisions=1/100=1%
 
@@ -164,9 +164,9 @@ FILES = module_globalVariables.F90 module_particle.F90 initialize.F90 module_ove
 
 # Directories
 
-# . (device 16777220, inode 15787933): 28 files, no impossibilities.
+# . (device 16777220, inode 15787933): 35 files, no impossibilities.
 
-# 28 files, no impossibilities in 1 directories.
+# 35 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -179,7 +179,7 @@ clean_data:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 28):
-	rm -f ./results/*
+	rm -r ./results/*
 	
 
 all: collide
@@ -202,7 +202,7 @@ all: collide
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-27 12:45:11
+#  Last modified 2022-07-04 00:34:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -220,7 +220,7 @@ clean:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 23):
 	rm -f *.o *.mod *.MOD *.out
-	rm -f ./results/*
+	rm -r ./results/*
 	
 
 collide:
@@ -264,6 +264,6 @@ collide:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Jul  2 13:55:03 2022
+# Finished Make data base on Mon Jul  4 17:44:26 2022
 
  
