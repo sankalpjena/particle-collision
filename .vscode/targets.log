@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Jul  4 17:44:26 2022
+# Make data base, printed on Tue Jul  5 23:26:51 2022
 
 # Variables
 
@@ -24,7 +24,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/sankalp/Desktop/Semester4/MPS/Beleg/collisionV1
+CURDIR := /Users/sankalp/Desktop/Semester4/MPS/Beleg/collision
 # makefile
 SHELL = /bin/sh
 # environment
@@ -38,7 +38,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-b9b5de01-9987-470d-aef4-6c43ca7b8997.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/ts/q73dlwyj42b_qnzk6bkhxkmm0000gn/T/vscode-ipc-67923261-decd-449a-ae9f-4b120a80e20a.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -62,7 +62,7 @@ CONDA_EXE = /usr/local/Caskroom/miniconda/base/bin/conda
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/sankalp/Desktop/Semester4/MPS/Beleg/collisionV1
+PWD = /Users/sankalp/Desktop/Semester4/MPS/Beleg/collision
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -150,7 +150,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 21817
+VSCODE_PID = 66818
 # environment
 _CE_CONDA = 
 # makefile (from `Makefile', line 5)
@@ -164,9 +164,9 @@ FILES = module_globalVariables.F90 module_particle.F90 initialize.F90 module_ove
 
 # Directories
 
-# . (device 16777220, inode 15787933): 35 files, no impossibilities.
+# . (device 16777220, inode 15787933): 30 files, no impossibilities.
 
-# 35 files, no impossibilities in 1 directories.
+# 30 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -202,11 +202,19 @@ all: collide
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-04 00:34:26
+#  Last modified 2022-07-05 23:10:04
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+clean_plots:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 32):
+	rm -r ./plots/*.png
+	
 
 # Not a target:
 .DEFAULT:
@@ -252,7 +260,7 @@ collide:
 	
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/23=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -264,6 +272,6 @@ collide:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul  4 17:44:26 2022
+# Finished Make data base on Tue Jul  5 23:26:51 2022
 
  
