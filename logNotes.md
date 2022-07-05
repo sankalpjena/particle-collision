@@ -202,3 +202,14 @@ Problem of overlap: To control the maximum overlap, the normal stiffness coeffic
 For $k_r = 450$ in `module_globalVariables.F90` and `dt = 0.1` in `input.dat` the solution looks physical till $t \sim 1 s$, and then diverges. I expected that upon decreasing `dt` the solution should converge, but it diverges completely.
 
 Bouncing ball working for $k_r = 10^6$, $\delta t = 0.0001 $.
+
+# 05<sup>th</sup> July
+
+Animation is created by first saving PNG images. Then, using ffmpeg a movie is created.
+
+```
+ffmpeg -r 30 -i plots/image%d.png -pix_fmt yuv420p ./animation/ball.mp4
+```
+Source: https://www.youtube.com/watch?v=thDma0lO0U8&t=97s
+
+Note: Higher frame rate => Faster playback

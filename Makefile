@@ -26,3 +26,7 @@ clean:
 # clean up
 clean_data:
 	rm -r ./results/*
+
+# remove plots
+clean_plots:
+	rm -r ./plots/*.png
