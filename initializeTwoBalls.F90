@@ -28,8 +28,8 @@ if(n_steps.gt.0) &
 n_steps = min(n_steps,ceiling(t_end/dt))
 
 ! Particle initialisation
-NpWall = 200 ! number of wall particles
-Np = 1
+NpWall = 100 ! number of wall particles
+Np = 2
 NpTotal = Np + NpWall
 
 ! creating 'Np' particles
@@ -50,10 +50,10 @@ wallI = 1.0e10
 
 ! positions
 x(1,:) = (/0.5,1.0/)
-!x(2,:) = (/0.5,2.0/) 
+x(2,:) = (/0.5,2.0/) 
 
 ! wall positions and properties
-lWall = 2 ! length of wall
+lWall = 1 ! length of wall
 dx = lWall / (NpWall+1)
 
 x(Np+1,:) = (/0.0,0.0/) ! position of first wall particle
@@ -88,9 +88,9 @@ do i = 1,Np
   radius(i) = 0.1
   mass(i) = 1.0 
   pMoI(i) = 0.1 
-  velocity(i,1) = 0.8 
+  velocity(i,1) = 0.0 
   velocity(i,2) = 0.0 
-  angVelocity(i) = 0.2 
+  angVelocity(i) = 0.0 
   elTanDef(i,1) = 0.0 
   elTanDef(i,2) = 0.0 
   velocityChange(i,1) = 0.0

@@ -4,7 +4,7 @@ module moduleParticle
 implicit none
 save
 
-integer :: Np
+integer :: Np,NpWall,NpTotal
 
 ! particle class
 type particle

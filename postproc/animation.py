@@ -39,7 +39,9 @@ dt = delta_t[0]
 t_end = t_end[0]
 
 # plotting circles
-Np = 2 # Number of particles
+NpWall = 200
+Np = 1
+NpTotal = Np + NpWall # Number of particles
 
 # image index
 imIdx = 0
@@ -54,24 +56,27 @@ for i in range(nStart, nStop, nStep):
     fig, ax = plt.subplots()
 
     # scatter the particle positions
-    ax.scatter(x,y,marker='.',color='k',edgecolors='red',s=100)
+    ax.scatter(x,y,marker='.',color='k')#,edgecolors='red',s=10)
 
     # plot the velocity vectors
-    plt.quiver(x,y,vx,vy)
+    #plt.quiver(x,y,vx,vy)
 
     # plot circles around the particles
     anotateOffSetX = 0.006
     anotateOffSetY = 0.010
-    for p in range(0,Np):
+    for p in range(0,NpTotal):
         circles = plt.Circle((x[p],y[p]), r[p], fill=False)
         ax.add_patch(circles)
+    
+    for p in range(0,Np):
         text = 'p%i' %(p+1)
         ax.annotate(text,(x[p]+anotateOffSetX,y[p]+anotateOffSetY),size=10,color='b')
     
+    
     # formatting the axes, adding titles
     ax.set_aspect('equal', 'box')
-    ax.set(xlim=(-1.5, 1.5), ylim=(-1, 1))
-    ax.set_title('Time, t = %i' %(i), fontsize=10)
+    ax.set(xlim=(0, 2), ylim=(-0.5, 1))
+    ax.set_title('Time-Step, t = %i' %(i), fontsize=10)
 
     # pause the plot before going to the next one
     #plt.pause(0.000001)

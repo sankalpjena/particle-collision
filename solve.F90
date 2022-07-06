@@ -29,24 +29,25 @@ subroutine solve()
 write(*,*) ''
 
 ! Initialising the Forces to be zero/gravity 
-! for 2 particles don't give gravity force to the second fixed particle
-! for multiple particles replace 1 -> i
+
 do i = 1,Np 
   P(i)%velocityChange(:) = (/0.0, - P(i)%mass * gravity/) 
   P(i)%angVelocityChange = 0
 end do
 
-! particle 2 is wall
-P(2)%velocityChange(:) = (/0.0, 0.0/) 
-P(2)%angVelocityChange = 0
+! wall particles
+do i = Np+1,NpTotal
+  P(i)%velocityChange(:) = (/0.0, 0.0/) 
+  P(i)%angVelocityChange = 0
+end do
 
-do i = 1,Np ! particle - p
+do i = 1,NpTotal ! particle - p
   
   ! properties of 'p'
   rP = P(i)%radius  ! radius
   mP = P(i)%mass    ! mass
 
-  do j = i+1,Np ! particle - q
+  do j = i+1,NpTotal ! particle - q
     
     ! properties of 'q'
     rQ = P(j)%radius  ! radius
@@ -95,7 +96,7 @@ do i = 1,Np ! particle - p
 
       ! radial contact force (Eq. 4.18)
       factor = sqrt(def/(rP+rQ))
-      mEff = (mP * mQ) / (mP + mQ)
+      mEff = (mP) / (mP/mQ + 1.0)
       grm = gamma_r * mEff
       Fr_pq = factor * (k_r * def * normal - grm * vr_pq)
 

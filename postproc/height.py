@@ -24,7 +24,9 @@ dt = delta_t[0]
 t_end = t_end[0]
 
 # plotting circles
-Np = 2 # Number of particles
+NpWall = 100
+numParticles = 2
+Np = numParticles + NpWall # Number of particles
 
 # plotting the variation of height
 #print("no of files", int((nStop - nStart)/nt_out))
