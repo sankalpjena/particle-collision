@@ -7,7 +7,7 @@ real, allocatable :: x(:,:) ! position, dimension (Number of particles, 2D)
 real, allocatable :: radius(:), mass(:), pMoI(:), velocity(:,:), angVelocity(:), elTanDef(:,:), velocityChange(:,:)  ! dimension (Number of particles)
 integer :: i
 logical :: lo
-real :: wallR,wallM,dx,lWall, height
+real :: wallR,wallM,dx,lWall
 
 
 namelist /general/   n_steps,    &! number of time steps
@@ -28,8 +28,8 @@ if(n_steps.gt.0) &
 n_steps = min(n_steps,ceiling(t_end/dt))
 
 ! Particle initialisation
-NpWall = 500 ! number of wall particles
-Np = 20
+NpWall = 200 ! number of wall particles
+Np = 1
 NpTotal = Np + NpWall
 
 ! creating 'Np' particles
@@ -48,26 +48,12 @@ wallR = 1e-10 !1.0e-12
 wallM = 1.0e10
 wallI = 1.0e10
 
-! particle properties
-partR = 0.1
-partM = 1.0
-partI = 1.0
-
 ! positions
-! T shaped position of particles
-height = 3.0
-x(1,:) = (/1.5,height/)
-do i = 2,Np-10
-  x(i,:) = (/x(i-1,1) + 2 * partR + 0.01, height/)
-end do
-
-x(Np-9,:) = (/2.5,height - 2 * partR/)
-do i = Np-8,Np
-  x(i,:) = (/2.5, x(i-1,2) - 2 * partR - 0.01/)
-end do
+x(1,:) = (/0.5,1.0/)
+!x(2,:) = (/0.5,2.0/) 
 
 ! wall positions and properties
-lWall = 5 ! length of wall
+lWall = 2 ! length of wall
 dx = lWall / (NpWall+1)
 
 x(Np+1,:) = (/0.0,0.0/) ! position of first wall particle
@@ -99,12 +85,12 @@ end do
 ! particle properties
 ! Property: radius
 do i = 1,Np
-  radius(i) = partR
-  mass(i) = partM 
-  pMoI(i) = partI 
-  velocity(i,1) = 0.0 
+  radius(i) = 0.1
+  mass(i) = 1.0 
+  pMoI(i) = 0.1 
+  velocity(i,1) = 0.8 
   velocity(i,2) = 0.0 
-  angVelocity(i) = 0.0 
+  angVelocity(i) = 0.2 
   elTanDef(i,1) = 0.0 
   elTanDef(i,2) = 0.0 
   velocityChange(i,1) = 0.0

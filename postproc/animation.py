@@ -39,8 +39,8 @@ dt = delta_t[0]
 t_end = t_end[0]
 
 # plotting circles
-NpWall = 200
-Np = 1
+NpWall = 500
+Np = 20
 NpTotal = Np + NpWall # Number of particles
 
 # image index
@@ -75,7 +75,7 @@ for i in range(nStart, nStop, nStep):
     
     # formatting the axes, adding titles
     ax.set_aspect('equal', 'box')
-    ax.set(xlim=(0, 2), ylim=(-0.5, 1))
+    ax.set(xlim=(-2, 6), ylim=(-1, 4))
     ax.set_title('Time-Step, t = %i' %(i), fontsize=10)
 
     # pause the plot before going to the next one
